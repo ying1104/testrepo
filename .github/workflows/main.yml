@@ -1,9 +1,6 @@
 name: Add comments
 
 on:
-  issues:
-    types:
-      - labeled
   workflow_run:
     workflows: [main2]
     types:
