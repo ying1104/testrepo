@@ -1,10 +1,19 @@
-name: info-needed Closer
+name: Stale Issue Closer
 permissions:
   issues: write
 on:
   workflow_dispatch:
   schedule:
-    - cron: 20 11 * * * # 4:20am Redmond
+  #        ┌───────────── minute (0 - 59)
+  #        │ ┌───────────── hour (0 - 23)
+  #        │ │ ┌───────────── day of the month (1 - 31)
+  #        │ │ │ ┌───────────── month (1 - 12 or JAN-DEC)
+  #        │ │ │ │ ┌───────────── day of the week (0 - 6 or SUN-SAT)
+  #        │ │ │ │ │
+  #        │ │ │ │ │
+  #        │ │ │ │ │
+  #        * * * * *
+  - cron: "0 0 * * *"
 
 jobs:
   main:
@@ -18,12 +27,12 @@ jobs:
           ref: stable
       - name: Install Actions
         run: npm install --production --prefix ./actions
-      - name: Run info-needed Closer
+      - name: Run Stale Issue Closer
         uses: ./actions/needs-more-info-closer
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          label: Stale
+          label: waiting for user response
           closeDays: 0
-          closeComment: "This issue has been closed automatically because it needs more information and has not had recent activity. See also our [issue reporting](https://aka.ms/vscodeissuereporting) guidelines.\n\nHappy Coding!"
+          closeComment:  "Hey @${assignee}, this issue might need further attention.\n\n@${author}, you can help us out by closing this issue if the problem no longer exists, or adding more information."
           pingDays: 0
-          pingComment: "Hey @${assignee}, this issue might need further attention.\n\n@${author}, you can help us out by closing this issue if the problem no longer exists, or adding more information."
+          pingComment:  "Hey @${assignee}, this issue might need further attention.\n\n@${author}, you can help us out by closing this issue if the problem no longer exists, or adding more information."
