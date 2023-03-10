@@ -1,0 +1,21 @@
+name: Close stale 'waiting for user response' issues
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+
+    steps:
+      - name: Chceck for stale issues
+        uses: actions/stale@v5
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          days-before-issue-stale: 0
+          days-before-issue-close: 1
+          any-of-labels: "waiting for response"
