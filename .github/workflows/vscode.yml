@@ -34,6 +34,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           label: waiting for user response
           closeDays: 0
-          closeComment:  "Hey @${assignee}, this issue might need further attention.\n\n@${author}, you can help us out by closing this issue if the problem no longer exists, or adding more information."
+          closeComment: "See also our [issue reporting](https://aka.ms/vscodeissuereporting), Hey @${assignee}, this issue might need further attention.\n\n@${author}, you can help us out by closing this issue if the problem no longer exists, or adding more information."
           pingDays: 0
-          pingComment:  "Hey @${assignee}, this issue might need further attention.\n\n@${author}, you can help us out by closing this issue if the problem no longer exists, or adding more information."
+          pingComment: "Hey @${assignee}, this issue might need further attention.\n\n@${author}, you can help us out by closing this issue if the problem no longer exists, or adding more information."
