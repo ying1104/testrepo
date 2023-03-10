@@ -18,5 +18,6 @@ jobs:
         uses: peter-evans/create-or-update-comment@v2
         with:
           issue-number: ${{github.event.issue.number}}
-          body: "This issue has been labeled with ${{github.event.label.name}} by @${{github.event.sender.login}}. Assignee is @${{github.event.issue.assignee.login}} and author is @${{github.event.issue.user.login}}."
+          body: |
+            "This issue has been labeled with ${{github.event.label.name}} by @${{github.event.sender.login}}. Assignee is @${{github.event.issue.assignee.login}} and author is @${{github.event.issue.user.login}}."
 
