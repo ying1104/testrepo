@@ -20,7 +20,7 @@ jobs:
         uses: ./actions/needs-more-info-closer
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          label: Stale
+          label: waiting for response
           closeDays: 0
           closeComment: "This issue has been closed automatically because it needs more information and has not had recent activity. See also our [issue reporting](https://aka.ms/vscodeissuereporting) guidelines.\n\nHappy Coding!"
           pingDays: 0
