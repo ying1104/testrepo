@@ -31,7 +31,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           label: waiting for user response
-          # Close issues that are marked a waiting for user response label and were last interacted with by a contributor or bot, after 30 days has passed.
+          # Close issues that are marked a 'waiting for user response' label and were last interacted with by a contributor or bot, after 30 days has passed.
           closeDays: 30
           # Ping the assignee if the last comment was by someonne other than a team member or bot ater 7 days has passed.
           closeComment: "This issue has been closed automatically because it needs more information and has not had recent activity. If the issue still persists, please reopen with the information requested. Thanks."
