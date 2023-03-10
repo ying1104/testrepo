@@ -9,7 +9,7 @@ on:
 
 jobs:
   add-comment:
-    if: contains(github.event.issue.labels.*.name, 'Stale')
+    if: github.event.issue.labels.*.name != ''
     runs-on: ubuntu-latest
     permissions:
       issues: write
