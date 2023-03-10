@@ -2,7 +2,7 @@ name: Close stale 'waiting for user response' issues
 
 on:
   schedule:
-    - cron: "10 03 * * *"
+    - cron: "*/6 * * * *"
   workflow_dispatch:
 
 jobs:
