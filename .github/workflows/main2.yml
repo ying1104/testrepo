@@ -1,4 +1,4 @@
-name: Close stale 'waiting for user response' issues
+name: main2
 
 on:
   schedule:
