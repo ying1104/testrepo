@@ -1,7 +1,6 @@
 name: Stale Issue Closer
 permissions:
   issues: write
-  contents: read
 on:
   schedule:
   #        ┌───────────── minute (0 - 59)
