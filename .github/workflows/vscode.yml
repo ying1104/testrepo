@@ -35,5 +35,5 @@ jobs:
           label: waiting for user response
           closeDays: 7
           closeComment: "This issue has been closed automatically because it needs more information and has not had recent activity. If the issue still persists, please reopen with the information requested. Thanks."
-          pingDays: 21
+          pingDays: 0
           pingComment: "Hey @${assignee}, this issue might need further attention.\n\n@${author}, you can help us out by closing this issue if the problem no longer exists, or adding more information."
