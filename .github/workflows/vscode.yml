@@ -1,5 +1,6 @@
 name: info-needed Closer
 on:
+  workflow_dispatch:
   schedule:
     - cron: 20 11 * * * # 4:20am Redmond
 
