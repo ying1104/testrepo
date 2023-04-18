@@ -23,12 +23,11 @@ jobs:
             console.log(author);
             console.log(commentAuthor);
             console.log(author === commentAuthor);
-            const isAuthor = author === commentAuthor;
-            console.log(`isAuthor: ${isAuthor}`);
-            return {is_author: isAuthor};
+            return author === commentAuthor;
+
 
       - name: Add/Remove label
-        if: ${{ steps.check_author.outputs.is_author }}
+        if: ${{ steps.check_author.outputs.result == "true" }}
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
