@@ -27,7 +27,7 @@ jobs:
 
 
       - name: Add/Remove label
-        if: ${{ steps.check_author.outputs.result == true }}
+        if: ${{ steps.check_author.outputs.result }}
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -37,6 +37,7 @@ jobs:
             const labels = payload.issue.labels.map(label => label.name);
             const hasWaitingLabel = labels.includes('waiting for user response');
             const hasRespondedLabel = labels.includes('user responded');
+            console.log(steps.check_author.outputs);
 
             if (hasWaitingLabel && !hasRespondedLabel) {
               await github.rest.issues.removeLabel({
