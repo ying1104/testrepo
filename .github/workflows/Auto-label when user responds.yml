@@ -22,8 +22,6 @@ jobs:
             const author = payload.issue.user.login;
             const commentAuthor = payload.comment.user.login;
             echo "::set-output name=is_author::${{ author === commentAuthor }}"
-
-
   auto-label:
     runs-on: ubuntu-latest
     needs: [run-check]
@@ -39,7 +37,6 @@ jobs:
             const labels = payload.issue.labels.map(label => label.name);
             const hasWaitingLabel = labels.includes('waiting for user response');
             const hasRespondedLabel = labels.includes('user responded');
-
             if (hasWaitingLabel && !hasRespondedLabel) {
               await github.rest.issues.removeLabel({
                 owner: context.repo.owner,
