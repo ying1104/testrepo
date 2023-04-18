@@ -27,7 +27,7 @@ jobs:
 
 
       - name: Add/Remove label
-        if: ${{ steps.check_author.outputs.is_author == true }}
+        if: ${{ steps.check_author.outputs.result == true }}
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
