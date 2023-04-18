@@ -21,6 +21,7 @@ jobs:
             const payload = context.payload;
             const author = payload.issue.user.login;
             const commentAuthor = payload.comment.user.login;
+            console.log(`is_author: ${author === commentAuthor}`);
             return {
               is_author: author === commentAuthor
             }
