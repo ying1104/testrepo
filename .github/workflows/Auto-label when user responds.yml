@@ -1,4 +1,6 @@
 name: Auto-label when user responds
+permissions:
+  issues: write
 
 on:
   issue_comment:
