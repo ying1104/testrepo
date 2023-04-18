@@ -10,7 +10,7 @@ jobs:
 
     steps:
     - name: Check if comment was made by issue author
-      uses: actions/github-script@v5
+      uses: actions/github-script@v6
       with:
         script: |
           const payload = context.payload;
@@ -30,13 +30,13 @@ jobs:
           const hasRespondedLabel = labels.includes('user responded');
 
           if (hasWaitingLabel && !hasRespondedLabel) {
-            github.issues.removeLabel({
+            github.rest.issues.removeLabel({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: issue_number,
               name: 'waiting for user response'
             });
-            github.issues.addLabels({
+            github.rest.issues.addLabels({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: issue_number,
