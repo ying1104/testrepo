@@ -21,9 +21,8 @@ jobs:
             const payload = context.payload;
             const author = payload.issue.user.login;
             const commentAuthor = payload.comment.user.login;
-            console.log(`is_author: ${author === commentAuthor}`);
             return {
-              is_author: author === commentAuthor
+              is_author: Boolean(author === commentAuthor)
             }
   auto-label:
     runs-on: ubuntu-latest
