@@ -26,7 +26,7 @@ jobs:
             return author === commentAuthor;
 
       - name: Add/Remove label
-        if: ${{ steps.check_author.outputs.result }}
+        if: steps.check_author.outputs.result
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -37,6 +37,7 @@ jobs:
             const hasWaitingLabel = labels.includes('waiting for user response');
             const hasRespondedLabel = labels.includes('user responded');
             console.log(${{ steps.check_author.outputs.result }});
+            console.log(steps.check_author.outputs.result);
             if (hasWaitingLabel && !hasRespondedLabel) {
               await github.rest.issues.removeLabel({
                 owner: context.repo.owner,
