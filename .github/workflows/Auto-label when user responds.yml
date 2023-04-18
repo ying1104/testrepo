@@ -21,7 +21,9 @@ jobs:
             const payload = context.payload;
             const author = payload.issue.user.login;
             const commentAuthor = payload.comment.user.login;
-            echo "::set-output name=is_author::${{ author === commentAuthor }}"
+            return {
+              is_author: author === commentAuthor
+            }
   auto-label:
     runs-on: ubuntu-latest
     needs: [run-check]
