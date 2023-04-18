@@ -33,13 +33,13 @@ jobs:
             const hasRespondedLabel = labels.includes('user responded');
 
             if (hasWaitingLabel && !hasRespondedLabel) {
-              await github.issues.removeLabel({
+              await github.rest.issues.removeLabel({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: issue_number,
                 name: 'waiting for user response'
               });
-              await github.issues.addLabels({
+              await github.rest.issues.addLabels({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: issue_number,
