@@ -1,0 +1,45 @@
+name: Auto-label when user responds
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  auto_label:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check if comment was made by issue author
+      uses: actions/github-script@v4
+      with:
+        script: |
+          const payload = context.payload;
+          const author = payload.issue.user.login;
+          const commentAuthor = payload.comment.user.login;
+          return author === commentAuthor;
+
+    - name: Add/Remove label
+      if: ${{ steps.check_author.outputs.is_author }}
+      uses: actions/github-script@v4
+      with:
+        script: |
+          const payload = context.payload;
+          const issue_number = payload.issue.number;
+          const labels = payload.issue.labels.map(label => label.name);
+          const hasWaitingLabel = labels.includes('waiting for user response');
+          const hasRespondedLabel = labels.includes('user responded');
+
+          if (hasWaitingLabel && !hasRespondedLabel) {
+            github.issues.removeLabel({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue_number,
+              name: 'waiting for user response'
+            });
+            github.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue_number,
+              labels: ['user responded']
+            });
+          }
