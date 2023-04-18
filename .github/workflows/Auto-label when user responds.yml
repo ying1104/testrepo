@@ -17,6 +17,8 @@ jobs:
           const author = payload.issue.user.login;
           const commentAuthor = payload.comment.user.login;
           return author === commentAuthor;
+      env:
+        NODE_VERSION: 16.x
 
     - name: Add/Remove label
       if: ${{ steps.check_author.outputs.is_author }}
@@ -43,3 +45,5 @@ jobs:
               labels: ['user responded']
             });
           }
+      env:
+        NODE_VERSION: 16.x
