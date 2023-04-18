@@ -17,6 +17,8 @@ jobs:
             const payload = context.payload;
             const author = payload.issue.user.login;
             const commentAuthor = payload.comment.user.login;
+            console.log(author);
+            console.lot(commentAuthor);
             return author === commentAuthor;
 
       - name: Add/Remove label
