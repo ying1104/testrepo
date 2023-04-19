@@ -23,13 +23,9 @@ jobs:
             const author = payload.issue.user.login;
             const commentAuthor = payload.comment.user.login;
             if (author === commentAuthor) {
-              return {
-                is_author: true
-              }
+              echo "is_author=true" >> $GITHUB_OUTPUT
             } else {
-              return {
-                is_author: false
-              }
+              echo "is_author=false" >> $GITHUB_OUTPUT
             }
   auto-label:
     runs-on: ubuntu-latest
