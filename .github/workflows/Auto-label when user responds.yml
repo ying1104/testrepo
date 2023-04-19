@@ -22,14 +22,18 @@ jobs:
             const author = payload.issue.user.login;
             const commentAuthor = payload.comment.user.login;
             if (author === commentAuthor) {
-              echo "::set-output name=is_author::true"
+              return {
+                is_author: true
+              }
             } else {
-              echo "::set-output name=is_author::false"
+              return {
+                is_author: false
+              }
             }
   auto-label:
     runs-on: ubuntu-latest
     needs: [run-check]
-    if: ${{ needs.run-check.outputs.is_author == 'true' }}
+    if: ${{ needs.run-check.outputs.is_author}}
     steps:
       - name: add/remove labels
         uses: actions/github-script@v6
