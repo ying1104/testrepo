@@ -49,9 +49,12 @@ jobs:
             const labels = payload.issue.labels.map(label => label.name);
             const hasWaitingLabel = labels.includes('waiting for user response');
             const hasRespondedLabel = labels.includes('user responded');
-            console.log(${{ needs.run-check.outputs.is_author == 'true'}} || ${{ needs.run-check.outputs.is_author}});
-            console.log(${{ needs.run-check.outputs.is_author == 'true'}});
-            console.log(${{ needs.run-check.outputs.is_author}});
+            const a = ${{ needs.run-check.outputs.is_author == 'true'}} || ${{ needs.run-check.outputs.is_author}};
+            const b = ${{ needs.run-check.outputs.is_author == 'true'}};
+            const c = ${{ needs.run-check.outputs.is_author}};
+            console.log(a);
+            console.log(b);
+            console.log(c);
             
             if (hasWaitingLabel && !hasRespondedLabel) {
               await github.rest.issues.removeLabel({
