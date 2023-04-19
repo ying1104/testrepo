@@ -17,6 +17,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          result-encoding: string
           script: |
             const payload = context.payload;
             const author = payload.issue.user.login;
@@ -39,6 +40,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          result-encoding: string
           script: |
             const payload = context.payload;
             const issue_number = payload.issue.number;
