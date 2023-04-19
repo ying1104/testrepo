@@ -32,6 +32,15 @@ jobs:
     needs: [run-check]
     if: ${{ needs.run-check.outputs.is_author }}
     steps:
+      - name: Print variables
+        run: |
+            echo "a: ${a}"
+            echo "b: ${b}"
+            echo "c: ${c}"
+        env:
+            a: ${{ needs.run-check.outputs.is_author == 'true' }} || ${{ needs.run-check.outputs.is_author }}
+            b: ${{ needs.run-check.outputs.is_author == 'true' }}
+            c: ${{ needs.run-check.outputs.is_author }}
       - name: add/remove labels
         uses: actions/github-script@v6
         with:
