@@ -25,7 +25,7 @@ jobs:
             if (author === commentAuthor) {
               console.log("::set-output name=is_author::true");
             } else {
-              console.lot("::set-output name=is_author::false");
+              console.log("::set-output name=is_author::false");
             }
   auto-label:
     runs-on: ubuntu-latest
