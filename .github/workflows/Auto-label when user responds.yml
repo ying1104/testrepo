@@ -21,8 +21,10 @@ jobs:
             const payload = context.payload;
             const author = payload.issue.user.login;
             const commentAuthor = payload.comment.user.login;
-            return {
-              is_author: Boolean(author === commentAuthor)
+            if (author === commentAuthor) {
+              echo "::set-output name=is_author::true"
+            } else {
+              echo "::set-output name=is_author::false"
             }
   auto-label:
     runs-on: ubuntu-latest
